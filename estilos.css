@@ -1,0 +1,1383 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #080914;
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive, sans-serif;
+}
+
+.tarjeta {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffe92e;
+  background: radial-gradient(circle at 50% 90%, #2d2a3b 0, #171623 43%, #080914 100%);
+}
+
+/* Encabezado */
+.mensaje {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding-top: 7vh;
+  text-shadow: 0 0 11px #f8bd00;
+}
+
+.mensaje h1 {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 66px);
+  line-height: 1.08;
+}
+
+.mensaje p {
+  margin: 16px 0 0;
+  color: #fff0a0;
+  font-size: clamp(18px, 2vw, 28px);
+  text-shadow: none;
+}
+
+.gato {
+  margin-top: 5px;
+  font-size: 42px;
+  animation: gato-feliz 1.5s infinite alternate;
+}
+
+@keyframes gato-feliz {
+  to {
+    transform: translateY(-6px) rotate(5deg);
+  }
+}
+
+/* Estrellas */
+.estrella {
+  position: absolute;
+  z-index: 2;
+  color: #fffde4;
+  animation: brillar 2s infinite alternate;
+}
+
+.estrella-1 {
+  top: 14%;
+  left: 18%;
+  font-size: 25px;
+}
+
+.estrella-2 {
+  top: 40%;
+  right: 15%;
+  font-size: 23px;
+}
+
+.estrella-3 {
+  bottom: 19%;
+  left: 10%;
+  font-size: 30px;
+}
+
+.estrella-4 {
+  bottom: 15%;
+  right: 12%;
+  font-size: 24px;
+}
+
+@keyframes brillar {
+  to {
+    opacity: 0.25;
+    transform: scale(0.7);
+  }
+}
+
+/* Flores decorativas de fondo */
+.flor-fondo {
+  position: absolute;
+  z-index: 1;
+  font-size: 48px;
+  opacity: 0.2;
+  animation: flotar 4s ease-in-out infinite alternate;
+}
+
+.rosa {
+  color: #ff90bd;
+}
+
+.lila {
+  color: #c49cff;
+}
+
+.celeste {
+  color: #82d9ff;
+}
+
+.fondo-1 {
+  top: 31%;
+  left: 8%;
+}
+
+.fondo-2 {
+  top: 55%;
+  right: 8%;
+  animation-delay: 1s;
+}
+
+.fondo-3 {
+  bottom: 16%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.fondo-4 {
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 0.5s;
+}
+
+.fondo-5 {
+  top: 60%;
+  left: 20%;
+  animation-delay: 1.5s;
+}
+
+.fondo-6 {
+  top: 62%;
+  right: 20%;
+  animation-delay: 2.5s;
+}
+
+@keyframes flotar {
+  to {
+    transform: translateY(-12px) rotate(10deg);
+  }
+}
+
+/* Ramo */
+.ramo {
+  position: absolute;
+  z-index: 3;
+  bottom: 8vh;
+  left: 50%;
+  width: min(88vw, 980px);
+  height: 68vh;
+  transform: translateX(-50%);
+}
+
+.tallos {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Girasoles */
+.flor {
+  position: absolute;
+  z-index: 2;
+  width: 70px;
+  height: 70px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 7px #ffbf00);
+  transition: scale 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+}
+
+.flor:hover {
+  scale: 1.3;
+  z-index: 10;
+  filter: drop-shadow(0 0 16px #fff4a0)
+          drop-shadow(0 0 28px #ffbf00);
+}
+
+.flor i {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  left: 20px;
+  top: 15px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(#fff52a, #ffb900);
+  transform-origin: 15px 20px;
+}
+
+.flor i:nth-child(1) {
+  transform: rotate(0deg) translateY(-18px);
+}
+
+.flor i:nth-child(2) {
+  transform: rotate(72deg) translateY(-18px);
+}
+
+.flor i:nth-child(3) {
+  transform: rotate(144deg) translateY(-18px);
+}
+
+.flor i:nth-child(4) {
+  transform: rotate(216deg) translateY(-18px);
+}
+
+.flor i:nth-child(5) {
+  transform: rotate(288deg) translateY(-18px);
+}
+
+.flor b {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  left: 26px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #df8c00;
+}
+
+/* El girasol 20 será el principal */
+.flor-principal {
+  scale: 1.48;
+  z-index: 6;
+  filter: drop-shadow(0 0 14px #fff3a0)
+          drop-shadow(0 0 27px #ffbc00);
+}
+
+.flor-principal:hover {
+  scale: 1.75;
+}
+
+/* Ventana emergente */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.modal.mostrar {
+  display: flex;
+}
+
+.modal-contenido {
+  width: min(90vw, 430px);
+  padding: 28px;
+  text-align: center;
+  color: #fff4b0;
+  background: #171623;
+  border: 2px solid #ffd92e;
+  box-shadow: 0 0 25px #e6ad00;
+  animation: abrir-modal 0.3s ease;
+}
+
+.modal-contenido h2 {
+  margin-top: 0;
+  color: #ffe22e;
+  font-size: 30px;
+}
+
+.modal-contenido p {
+  line-height: 1.5;
+  color: white;
+}
+
+.imagen-prototipo {
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  margin: 18px 0;
+  padding: 15px;
+  color: #7e5c00;
+  background: #ffe883;
+  border: 2px dashed #b88400;
+}
+
+.botones-modal {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.botones-modal button {
+  padding: 10px 25px;
+  border: none;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.boton-nah {
+  color: white;
+  background: #bd2834;
+}
+
+.boton-gracias {
+  color: #4a3400;
+  background: #ffe22e;
+}
+
+.boton-nah:hover,
+.boton-gracias:hover {
+  filter: brightness(1.15);
+  transform: scale(1.05);
+}
+
+@keyframes abrir-modal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 650px) {
+  .ramo {
+    width: 100vw;
+    height: 55vh;
+  }
+
+  .flor {
+    scale: 0.75;
+  }
+
+  .flor:hover {
+    scale: 1;
+  }
+
+  .flor-principal {
+    scale: 1.1;
+  }
+
+  .mensaje {
+    padding-top: 5vh;
+  }
+}
+
+/* Contadores superiores */
+.contador {
+  position: absolute;
+  z-index: 20;
+  top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 28px;
+  background: rgba(23, 22, 35, 0.8);
+  border: 1px solid #ffe22e;
+}
+
+.contador strong {
+  color: #ffe22e;
+  font-size: 22px;
+}
+
+.contador-nah {
+  left: 22px;
+}
+
+.contador-gracias {
+  right: 22px;
+}
+
+/* Girasol de la punta bloqueado */
+.flor-bloqueado {
+  opacity: 0.55;
+  filter: grayscale(0.4) drop-shadow(0 0 5px #777);
+}
+
+.flor-bloqueado::after {
+  content: "🔒";
+  position: absolute;
+  z-index: 15;
+  top: -25px;
+  left: 20px;
+  font-size: 25px;
+}
+
+.flor-desbloqueado {
+  animation: desbloquear 1s infinite alternate;
+}
+
+@keyframes desbloquear {
+  to {
+    filter: drop-shadow(0 0 18px #fff4a0)
+            drop-shadow(0 0 32px #ffbc00);
+  }
+}
+
+/* Esto me sera util para que el ratón tenga forma dee girasol jsjsjs  */
+
+.flor,
+button {
+  cursor: pointer;
+}
+
+/* La tierra cubre el inicio de los tallos */
+.suelo {
+  position: absolute;
+  z-index: 4;
+  bottom: -4vh;
+  left: -5vw;
+  width: 110vw;
+  height: 22vh;
+  background: linear-gradient(#173d22, #0b1d12 65%);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  box-shadow: 0 -10px 25px rgba(33, 103, 47, 0.35);
+}
+
+/* Piedras pequeñas */
+.piedra {
+  position: absolute;
+  bottom: 10vh;
+  width: 28px;
+  height: 13px;
+  border-radius: 50%;
+  background: #3b4a3a;
+}
+
+.piedra-1 {
+  left: 20%;
+}
+
+.piedra-2 {
+  left: 70%;
+  width: 18px;
+  height: 9px;
+}
+
+.piedra-3 {
+  left: 84%;
+  width: 35px;
+  height: 14px;
+}
+
+/* Luz especial al acercar el mouse a un girasol */
+.flor::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -35px;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255, 238, 112, 0.75), transparent 68%);
+  transition: opacity 0.25s ease;
+}
+
+.flor i {
+  z-index: 1;
+}
+
+.flor b {
+  z-index: 2;
+}
+
+.flor:hover::before {
+  opacity: 1;
+}
+
+.flor:hover {
+  scale: 1.38;
+  filter: drop-shadow(0 0 18px #fff8ab)
+          drop-shadow(0 0 35px #ffc400);
+}
+
+/* La página será más larga para poder bajar */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.tarjeta {
+  height: 120vh;
+  min-height: 1050px;
+}
+
+/* El ramo baja más, pero no queda tapado */
+.ramo {
+  height: 64vh;
+  bottom: 10vh;
+}
+
+/* La tierra aparece más abajo */
+.suelo {
+  bottom: -4vh;
+  height: 22vh;
+}
+
+/* Hojas laterales tipo girasol de PvZ */
+.flor::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 55px;
+  left: -8px;
+  width: 38px;
+  height: 17px;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #75bd40, #2f8737);
+  transform: rotate(18deg);
+}
+
+/* Alterna las hojas para que no se vean iguales */
+#contenedorFlores .flor:nth-child(even)::after {
+  left: 38px;
+  transform: rotate(160deg);
+}
+
+/* El girasol principal tendrá dos hojas */
+.flor-principal::after {
+  top: 60px;
+  left: -12px;
+  width: 45px;
+  height: 20px;
+  background: linear-gradient(135deg, #91cf45, #2f8737);
+  transform: rotate(20deg);
+}
+
+/* Al inicio, el ramo aún está escondido */
+.ramo {
+  opacity: 0;
+  transform: translateX(-50%) translateY(130px) scale(0.6);
+  pointer-events: none;
+  transition: opacity 1.2s ease, transform 2.2s ease;
+}
+
+/* Cuando se riega, el ramo crece */
+.tarjeta.cultivo-listo .ramo {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Semilla enterrada */
+/* Gotas que salen de la regadera y caen hacia la tierra */
+.gotas {
+  position: absolute;
+  z-index: 14;
+  right: 13%;
+  bottom: 25vh;
+  pointer-events: none;
+}
+
+.gotas span {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  border-radius: 50% 50% 55% 55%;
+  background: #5ddcff;
+  box-shadow: 0 0 10px #9ff4ff;
+  opacity: 0;
+}
+
+/* Cada gota cae un poco distinto */
+.regando .gotas span {
+  animation: caer-agua 1.1s ease-in forwards;
+}
+
+.regando .gotas span:nth-child(2) { animation-delay: .1s; left: 20px; }
+.regando .gotas span:nth-child(3) { animation-delay: .2s; left: -15px; }
+.regando .gotas span:nth-child(4) { animation-delay: .3s; left: 35px; }
+.regando .gotas span:nth-child(5) { animation-delay: .15s; left: 50px; }
+.regando .gotas span:nth-child(6) { animation-delay: .25s; left: -35px; }
+.regando .gotas span:nth-child(7) { animation-delay: .35s; left: 65px; }
+.regando .gotas span:nth-child(8) { animation-delay: .4s; left: -55px; }
+
+@keyframes caer-agua {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(.7);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-52vw, 28vh) scale(1.2);
+  }
+}
+
+/* La regadera se inclina mientras riega */
+.tarjeta.regando .boton-regar {
+  transform: rotate(-18deg) scale(1.08);
+}
+
+/* El ramo aparece lentamente desde la tierra */
+.tarjeta.cultivo-listo .ramo {
+  animation: crecer-ramo 2.8s ease-out forwards;
+}
+
+@keyframes crecer-ramo {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(160px) scale(.45);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Botón con la regadera */
+.boton-regar {
+  position: absolute;
+  z-index: 15;
+  right: 7%;
+  bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: #fff5b5;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: url("Girasol.svg") 16 16, pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.boton-regar img {
+  width: 100px;
+  filter: drop-shadow(0 0 8px rgba(87, 233, 190, 0.45));
+}
+
+/* Brilla al acercar el mouse */
+.boton-regar:hover {
+  transform: scale(1.12) rotate(-5deg);
+  filter: drop-shadow(0 0 15px #7effd1);
+}
+
+.boton-regar:hover img {
+  filter: drop-shadow(0 0 18px #9fffe1);
+}
+
+/* Se va luego de regar */
+.tarjeta.cultivo-listo .boton-regar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px);
+}
+
+/* Al inicio no se ven los girasoles */
+.tarjeta:not(.cultivo-listo) .ramo {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(160px) scale(.45) !important;
+}
+
+/* El ramo crece lento al terminar de regar */
+.tarjeta.cultivo-listo .ramo {
+  opacity: 1 !important;
+  pointer-events: auto;
+  animation: crecer-ramo 2.8s ease-out forwards;
+}
+
+/* La regadera se mueve hacia el centro, encima del ramo */
+.boton-regar {
+  transition: right 1s ease, bottom 1s ease, transform .4s ease, opacity .6s ease;
+}
+
+.tarjeta.regando .boton-regar {
+  right: 45%;
+  bottom: 43vh;
+  transform: rotate(-22deg) scale(1.1);
+}
+
+/* Las gotas nacen debajo de la regadera */
+.gotas {
+  position: absolute;
+  left: 40px;
+  top: 75px;
+  width: 70px;
+  height: 180px;
+  pointer-events: none;
+}
+
+.gotas i {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background: #65e5ff;
+  border-radius: 50% 50% 55% 55%;
+  box-shadow: 0 0 10px #b9f8ff;
+  opacity: 0;
+}
+
+.tarjeta.soltar-agua .gotas i {
+  animation: caer-agua 1.1s ease-in forwards;
+}
+
+.tarjeta.soltar-agua .gotas i:nth-child(2) { left: 15px; animation-delay: .12s; }
+.tarjeta.soltar-agua .gotas i:nth-child(3) { left: 32px; animation-delay: .25s; }
+.tarjeta.soltar-agua .gotas i:nth-child(4) { left: 48px; animation-delay: .08s; }
+.tarjeta.soltar-agua .gotas i:nth-child(5) { left: -12px; animation-delay: .32s; }
+.tarjeta.soltar-agua .gotas i:nth-child(6) { left: 23px; animation-delay: .42s; }
+.tarjeta.soltar-agua .gotas i:nth-child(7) { left: 58px; animation-delay: .36s; }
+.tarjeta.soltar-agua .gotas i:nth-child(8) { left: 8px; animation-delay: .55s; }
+
+@keyframes caer-agua {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(.7);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(190px) scale(1.15);
+  }
+}
+
+@keyframes crecer-ramo {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(160px) scale(.45);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Girasol número 8: Girasol Yamil */
+
+.mejilla {
+  position: absolute;
+  z-index: 10;
+  top: 37px;
+  width: 11px;
+  height: 7px;
+  background: #ff3451;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #ff7185;
+  pointer-events: none;
+}
+
+.mejilla-izquierda {
+  left: 12px;
+}
+
+.mejilla-derecha {
+  right: 12px;
+}
+
+/* Hace que el girasol 8 sea un poco más grande */
+.girasol-yamil {
+  scale: 1.16;
+  filter: drop-shadow(0 0 12px #ffe34f);
+}
+
+/* Luz fuerte, pero sin tapar los otros girasoles */
+.flor-principal,
+.flor-principal.flor-bloqueado {
+  scale: 1.22;
+  filter:
+    drop-shadow(0 0 10px #ffffff)
+    drop-shadow(0 0 22px #fff29a)
+    drop-shadow(0 0 42px #ffd000)
+    drop-shadow(0 0 62px #ffb300) !important;
+}
+
+/* El halo ya no bloquea los clics de las flores de abajo */
+.flor-principal::before {
+  inset: -55px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(255, 250, 180, 0.75) 0%,
+    rgba(255, 207, 0, 0.28) 42%,
+    transparent 72%
+  );
+}
+
+/* Principal: arriba y algo más grande */
+.flor-principal {
+  scale: 1.3;
+}
+
+/* Mientras siga bloqueado se ve apagado, sin candado */
+.flor-principal.flor-bloqueado {
+  opacity: 0.62 !important;
+  cursor: not-allowed;
+  filter: grayscale(.2) drop-shadow(0 0 10px #b6a752) !important;
+}
+
+/* Al desbloquearse recupera su luz especial */
+.flor-principal.flor-desbloqueado {
+  opacity: 1 !important;
+}
+
+@keyframes brillo-principal {
+  from {
+    filter:
+      drop-shadow(0 0 10px #ffffff)
+      drop-shadow(0 0 28px #fff29a)
+      drop-shadow(0 0 55px #ffd000);
+  }
+
+  to {
+    filter:
+      drop-shadow(0 0 18px #ffffff)
+      drop-shadow(0 0 45px #fff7ba)
+      drop-shadow(0 0 85px #ffd000)
+      drop-shadow(0 0 110px #ffb300);
+  }
+}
+
+.tallos {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tallo {
+  fill: none;
+  stroke: #278d39;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.hoja {
+  fill: #4da63b;
+}
+
+.flor {
+  z-index: 5;
+}
+
+.tallo {
+  fill: none;
+  stroke: #278d39;
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Girasol número 8: brillo rojo y corazón al pasar el mouse */
+.girasol-yamil:hover {
+  scale: 1.18;
+  z-index: 12;
+  filter: drop-shadow(0 0 10px #ff3154)
+          drop-shadow(0 0 24px #ff1644)
+          drop-shadow(0 0 38px rgba(255, 40, 75, 0.8));
+}
+
+.girasol-yamil::before {
+  content: "♥";
+  position: absolute;
+  z-index: 15;
+  top: -18px;
+  right: -10px;
+  color: #ff2450;
+  font-size: 25px;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 10px #ff2e54;
+  transform: scale(0.2) rotate(-15deg);
+  transition: 0.25s ease;
+}
+
+.girasol-yamil:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Girasol principal: fuerte iluminación solo al desbloquearse */
+.flor-principal.flor-bloqueado:hover {
+  scale: 1.48;
+  filter: grayscale(0.35) brightness(0.7);
+}
+
+.flor-principal.flor-desbloqueado {
+  filter: drop-shadow(0 0 16px #fff7a8)
+          drop-shadow(0 0 32px #ffc400)
+          drop-shadow(0 0 55px rgba(255, 187, 0, 0.9));
+}
+
+.flor-principal.flor-desbloqueado:hover {
+  scale: 1.7;
+  z-index: 20;
+  filter: drop-shadow(0 0 24px #fffde0)
+          drop-shadow(0 0 52px #fff02a)
+          drop-shadow(0 0 90px #ffb300);
+}
+
+/* =========================================
+   GATO CANDADO
+========================================= */
+
+.boton-candado {
+  position: absolute;
+  z-index: 30;
+  bottom: 28px;
+  left: 28px;
+  width: 118px;
+  border: none;
+  background: transparent;
+  color: #fff0a8;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 8px #f4ba00;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.boton-candado img {
+  display: block;
+  width: 92px;
+  margin: auto;
+  filter: drop-shadow(0 0 7px #ffcb24);
+}
+
+.boton-candado:hover {
+  transform: scale(1.12) rotate(-3deg);
+  filter: drop-shadow(0 0 14px #fff36b);
+}
+
+/* Ventana contraseña */
+.modal-clave {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 3, 12, .78);
+}
+
+.modal-clave.mostrar {
+  display: grid;
+}
+
+.clave-contenido {
+  position: relative;
+  width: min(430px, 100%);
+  padding: 32px 27px;
+  text-align: center;
+  color: #fff2a5;
+  background: #151426;
+  border: 2px solid #ffd52b;
+  box-shadow: 0 0 30px rgba(255, 203, 35, .45);
+}
+
+.clave-contenido h2 {
+  margin: 0 0 15px;
+  color: #ffe52e;
+}
+
+.clave-contenido p {
+  line-height: 1.5;
+}
+
+#inputClave {
+  width: 100%;
+  margin: 10px 0 14px;
+  padding: 12px;
+  border: 2px solid #ffd52b;
+  outline: none;
+  text-align: center;
+  font-size: 17px;
+  font-family: inherit;
+  background: #0c0c18;
+  color: white;
+}
+
+.boton-verificar {
+  border: none;
+  padding: 11px 24px;
+  background: #ffd52b;
+  color: #3b2500;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar-clave {
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.mensaje-clave {
+  min-height: 45px;
+  margin: 16px 0 0;
+  font-weight: bold;
+}
+
+.imagen-modal {
+  display: none;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 330px;
+  margin: auto;
+  object-fit: contain;
+  border: 2px solid #ffd52b;
+  background: #080914;
+}
+
+/* Álbum especial del girasol 8 */
+
+.imagen-prototipo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.visor-recuerdo {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal {
+  display: none;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 330px;
+  border: 2px solid #ffd52b;
+  background: #080914;
+}
+
+.flecha-recuerdo {
+  display: none;
+  border: none;
+  padding: 8px 11px;
+  background: #ffd52b;
+  color: #352300;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.flecha-recuerdo:hover {
+  transform: scale(1.15);
+}
+
+.contador-recuerdos {
+  min-height: 18px;
+  margin: 8px 0 0;
+  color: #fff0a0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Visor más grande para fotos y videos */
+
+.imagen-prototipo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 360px;
+  padding: 10px 6px;
+}
+
+.visor-recuerdo {
+  flex: 1;
+  min-width: 0;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imagen-modal,
+.video-modal {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Flechas más pequeñas para no quitar espacio a la foto */
+.flecha-recuerdo {
+  flex-shrink: 0;
+  padding: 7px 10px;
+  font-size: 22px;
+}
+
+/* Zoom especial para la quinta imagen de Yamil */
+.recuerdo-con-zoom {
+  transform: scale(1.22);
+}   
+
+/* Ventana y visor adaptables para fotos horizontales, verticales y video */
+
+.modal-contenido {
+  width: min(90vw, 650px);
+  max-height: 92vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.imagen-prototipo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 0;
+  padding: 10px 4px;
+}
+
+.visor-recuerdo {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.imagen-modal,
+.video-modal {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 430px;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* Flechas compactas: dejan más espacio para el recuerdo */
+.flecha-recuerdo {
+  flex-shrink: 0;
+  padding: 7px 10px;
+  font-size: 22px;
+}
+
+/* Quinta imagen: más acercada */
+.recuerdo-con-zoom {
+  transform: scale(1.38);
+}
+
+/* Botón para ampliar el recuerdo */
+
+.boton-ver-foto {
+  border: none;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  background: #ffd52b;
+  color: #352300;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton-ver-foto:hover {
+  background: #fff09a;
+}
+
+/* Ventana grande de fotos y videos */
+
+.modal-vista {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-vista.mostrar {
+  display: flex;
+}
+
+.vista-contenido {
+  position: relative;
+  width: min(94vw, 1100px);
+  height: min(88vh, 800px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border: 2px solid #ffd52b;
+  background: #11111f;
+  box-shadow: 0 0 30px #ffd52b;
+}
+
+#imagenVista,
+#videoVista {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.cerrar-vista {
+  position: absolute;
+  z-index: 1;
+  top: -16px;
+  right: -16px;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #ffd52b;
+  background: #1b1a2b;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Reproductor: solo aparece en el girasol 18 */
+.bloque-audio {
+  display: none;
+  margin: 16px auto 8px;
+  padding: 14px;
+  max-width: 480px;
+  background: #242137;
+  border: 1px solid #ffd52b;
+  box-shadow: 0 0 14px rgba(255, 213, 43, 0.35);
+}
+
+.bloque-audio p {
+  margin: 0 0 10px;
+  color: #fff09a;
+  text-align: center;
+  font-weight: bold;
+}
+
+#audioDedicado {
+  display: block;
+  width: 100%;
+  accent-color: #ffd52b;
+}
+
+/* Pista del primer girasol */
+.flor-inicio {
+  z-index: 15;
+}
+
+.pista-inicio {
+  position: absolute;
+  left: -18px;
+  bottom: 72px;
+  width: 105px;
+  padding: 7px 5px;
+  color: #fff09a;
+  background: rgba(27, 26, 43, 0.92);
+  border: 1px solid #ffd52b;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 0 14px rgba(255, 213, 43, 0.65);
+  animation: pista-latido 1.5s ease-in-out infinite;
+}
+
+@keyframes pista-latido {
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 0 24px rgba(255, 213, 43, 1);
+  }
+}
+
+/* GIRASOL FINAL: limpio, centrado y sin capas invisibles */
+.flor-principal {
+  z-index: 6;
+  pointer-events: auto;
+}
+
+/* Bloqueado: se ve apagado y no crece */
+.flor-principal.flor-bloqueado,
+.flor-principal.flor-bloqueado:hover {
+  scale: 1.48;
+  opacity: 0.55;
+  cursor: not-allowed;
+  animation: none;
+  filter: grayscale(0.4) drop-shadow(0 0 5px #777);
+}
+
+/* Desbloqueado: comportamiento normal */
+.flor-principal.flor-desbloqueado {
+  scale: 1.48;
+  opacity: 1;
+  cursor: pointer;
+  animation: none;
+  filter: drop-shadow(0 0 14px #fff3a0)
+          drop-shadow(0 0 27px #ffbc00);
+}
+
+/* Mismo efecto de las demás flores al pasar el mouse */
+.flor-principal.flor-desbloqueado:hover {
+  scale: 1.75;
+  z-index: 20;
+  filter: drop-shadow(0 0 16px #fff4a0)
+          drop-shadow(0 0 28px #ffbf00);
+}
+
+/* Área de clic del girasol final: cubre toda su figura */
+.flor-principal {
+  transform-origin: center center;
+}
+
+.flor-principal::before {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  background: transparent !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Nuevo girasol final: grande, centrado y conectado al tallo */
+.flor-final-nueva {
+  scale: 1.45;
+  z-index: 8;
+  filter: none;
+  transition: scale .25s ease, filter .25s ease;
+}
+
+/* Bloqueado: sin brillo ni crecimiento */
+.flor-final-nueva.flor-bloqueado,
+.flor-final-nueva.flor-bloqueado:hover {
+  scale: 1.45;
+  filter: grayscale(0.4) drop-shadow(0 0 5px #777);
+}
+
+/* Desbloqueado: solo brilla y crece al pasar el mouse */
+.flor-final-nueva.flor-desbloqueado {
+  animation: none;
+  filter: none;
+}
+
+.flor-final-nueva.flor-desbloqueado:hover {
+  scale: 1.75;
+  z-index: 20;
+  filter: drop-shadow(0 0 16px #fff4a0)
+          drop-shadow(0 0 28px #ffbf00);
+}
